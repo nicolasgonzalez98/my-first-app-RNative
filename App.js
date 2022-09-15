@@ -1,11 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { TextInput, Text, View, Image } from 'react-native';
 
 export default function App() {
+  const [text, setText] = useState('')
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View >
+      <Image source={require('./assets/favicon.png')} />
+
+      <TextInput
+        placeholder='Type here to capitalize...'
+        onChangeText={text => setText(text)}
+        defaultValue={text}
+      />
+
+      <Text>
+        {text.toUpperCase()}
+      </Text>
     </View>
   );
 }
